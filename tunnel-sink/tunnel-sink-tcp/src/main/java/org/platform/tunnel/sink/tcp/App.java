@@ -1,4 +1,4 @@
-package org.platform.tunnel.channel;
+package org.platform.tunnel.sink.tcp;
 
 public class App {
 

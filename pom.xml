@@ -10,6 +10,7 @@
 		<module>tunnel-source</module>
 		<module>tunnel-channel</module>
 		<module>tunnel-sink</module>
+		<module>tunnel-common</module>
 	</modules>
 
 	<groupId>org.platform.tunnel</groupId>

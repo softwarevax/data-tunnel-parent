@@ -1,4 +1,4 @@
-package org.platform.tunnel.source.http;
+package org.platform.tunnel.channel.memory;
 
 public class App {
 
