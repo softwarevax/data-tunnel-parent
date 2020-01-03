@@ -10,7 +10,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 /**
  * @author twcao
- * @description memory channel
+ * @description memory channel, if consume is faster than producer, memory channel is a good choice
  * @project data-tunnel-parent
  * @classname MemoryChennel
  * @date 2020/1/3 13:56
