@@ -8,8 +8,8 @@
 	<modules>
 		<module>tunnel-dependencies-bom</module>
 		<module>tunnel-source</module>
-		<module>tunnel-sink</module>
 		<module>tunnel-channel</module>
+		<module>tunnel-sink</module>
 	</modules>
 
 	<groupId>org.platform.tunnel</groupId>
