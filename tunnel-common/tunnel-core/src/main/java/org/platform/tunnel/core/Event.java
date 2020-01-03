@@ -1,4 +1,4 @@
-package org.platform.tunnel.common.beans;
+package org.platform.tunnel.core;
 
 import java.util.Map;
 

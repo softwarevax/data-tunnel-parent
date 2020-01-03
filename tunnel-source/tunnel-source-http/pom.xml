@@ -9,4 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>tunnel-source-http</artifactId>
+    <version>${revision}</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.platform.tunnel</groupId>
+            <artifactId>tunnel-core</artifactId>
+        </dependency>
+    </dependencies>
 </project>

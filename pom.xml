@@ -11,6 +11,7 @@
 		<module>tunnel-channel</module>
 		<module>tunnel-sink</module>
 		<module>tunnel-common</module>
+		<module>Tunnel-Test</module>
 	</modules>
 
 	<groupId>org.platform.tunnel</groupId>

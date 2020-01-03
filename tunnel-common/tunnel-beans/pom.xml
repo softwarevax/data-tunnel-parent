@@ -10,6 +10,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>tunnel-beans</artifactId>
+    <version>${revision}</version>
 
+    <dependencies>
+    </dependencies>
 
 </project>
