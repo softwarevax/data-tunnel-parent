@@ -24,3 +24,14 @@ AbstractTunnelTask task = TunnelTaskFactory.create(ctx, HttpSource.class, Alibab
 Thread thread = new Thread(task);
 thread.start();
 ```
+
+#### 3、运行
+```$xslt
+说明: 
+1、common、source、channel、sink将依赖包打进插件中，test(使用source、channel、sink插件的引用)不将依赖包打进，避免引用包版本冲突
+2、待运行jar包的绝对路径和lib目录的绝对路径，如果待运行的jar包在lib内，只是用lib目录即可，多个目录使用分号分隔，linux系统用冒号分隔
+java -classpath E:\project\idea\git\data-tunnel-parent\bin\tunnel-test-1.0.0.jar;E:\project\idea\git\data-tunnel-parent\bin\lib\* org.platform.tunnel.test.App
+```
+##### 3.1、修改根目录pom文件中的属性bin.path的值，改成jar包输出的绝对路径
+##### 3.2、install打包安装，应用jar包移至bin目录下，并删除模块target(maven-antrun-plugin)
+##### 3.3、运行bin目录下的start.bat文件即可

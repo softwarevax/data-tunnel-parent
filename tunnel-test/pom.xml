@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>data-tunnel-parent</artifactId>
+        <groupId>org.platform.tunnel</groupId>
+        <version>1.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>tunnel-test</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.platform.tunnel</groupId>
+            <artifactId>tunnel-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.platform.tunnel</groupId>
+            <artifactId>tunnel-source-http</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.platform.tunnel</groupId>
+            <artifactId>channel-memory</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.platform.tunnel</groupId>
+            <artifactId>channel-memory</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.platform.tunnel</groupId>
+            <artifactId>channel-alibaba-rocketmq</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.platform.tunnel</groupId>
+            <artifactId>tunnel-sink-tcp</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <!-- 不指定lib,在启动是制定classpath -->
+                            <addClasspath>false</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>org.platform.tunnel.test.App</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>install</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <copy todir="${bin.path}" overwrite="true" >
+                                    <fileset dir="${project.build.directory}" erroronmissingdir="false">
+                                        <include name="*.jar"/>
+                                        <!-- 排除不包含依赖的jar -->
+                                        <exclude name="original*.jar"/>
+                                        <exclude name="*shaded.jar"/>
+                                    </fileset>
+                                </copy>
+                                <delete includeEmptyDirs="true" failonerror="failonerror">
+                                    <fileset dir="${project.build.directory}"/>
+                                </delete>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
