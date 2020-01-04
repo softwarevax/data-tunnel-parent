@@ -13,5 +13,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>channel-memory</module>
+        <module>channel-alibaba-rocketmq</module>
     </modules>
 </project>

@@ -19,6 +19,7 @@
         <lombok.version>1.18.10</lombok.version>
         <common.collection.version>3.2.1</common.collection.version>
         <common.beanutils.version>1.9.4</common.beanutils.version>
+        <alibaba.rocketmq.version>3.2.6</alibaba.rocketmq.version>
     </properties>
 
     <dependencyManagement>
@@ -56,6 +57,11 @@
             </dependency>
             <dependency>
                 <groupId>org.platform.tunnel</groupId>
+                <artifactId>channel-alibaba-rocketmq</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.platform.tunnel</groupId>
                 <artifactId>tunnel-source-http</artifactId>
                 <version>${revision}</version>
             </dependency>
@@ -73,6 +79,11 @@
                 <groupId>commons-beanutils</groupId>
                 <artifactId>commons-beanutils</artifactId>
                 <version>${common.beanutils.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.rocketmq</groupId>
+                <artifactId>rocketmq-client</artifactId>
+                <version>${alibaba.rocketmq.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -1,9 +1,6 @@
 package org.platform.tunnel.sink.tcp;
 
-import org.platform.tunnel.core.Channel;
-import org.platform.tunnel.core.Constants;
-import org.platform.tunnel.core.Context;
-import org.platform.tunnel.core.Event;
+import org.platform.tunnel.core.*;
 import org.platform.tunnel.core.sink.AbstractSink;
 
 import java.nio.charset.Charset;
@@ -32,9 +29,23 @@ public class TcpSink extends AbstractSink {
     public void process() {
         System.out.println("sink start");
         Channel channel = getChannel();
-        while (true) {
-            Event e = channel.token();
-            System.out.println(new String(e.getBody(), Charset.forName(e.getHeaders().get(Constants.CHARSET))));
-        }
+        new Thread(() -> {
+            while (true) {
+                Event e = channel.take();
+                if(e.getBody() == null) {
+                    continue;
+                }
+                System.out.println("memory:" + new String(e.getBody()));
+            }
+        }).start();
+        new Thread(() -> {
+            channel.pull(new EventListener() {
+                @Override
+                public void token(Event e) {
+                    System.out.println("mq:" + new String(e.getBody(), Charset.forName(e.getHeaders().get(Constants.CHARSET))));
+                }
+            });
+        }).start();
+
     }
 }
