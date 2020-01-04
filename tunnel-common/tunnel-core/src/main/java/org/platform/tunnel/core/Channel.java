@@ -17,5 +17,10 @@ public interface Channel extends LifecycleAware, NamedComponent {
     /**
      * Returns the next event from the channel if available.
      */
-    Event token();
+    Event take();
+
+    /**
+     * Asynchronous pull
+     */
+    default void pull(EventListener listener) {}
 }

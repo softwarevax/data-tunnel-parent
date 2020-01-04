@@ -26,6 +26,14 @@
         </dependency>
         <dependency>
             <groupId>org.platform.tunnel</groupId>
+            <artifactId>channel-memory</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.platform.tunnel</groupId>
+            <artifactId>channel-alibaba-rocketmq</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.platform.tunnel</groupId>
             <artifactId>tunnel-sink-tcp</artifactId>
         </dependency>
     </dependencies>

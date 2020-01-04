@@ -25,7 +25,6 @@ public class MemoryChannel extends AbstractChannel {
 
     @Override
     public void configure(Context context) {
-
     }
 
     @Override
@@ -38,7 +37,7 @@ public class MemoryChannel extends AbstractChannel {
     }
 
     @Override
-    public Event token() {
+    public Event take() {
         try {
             return this.queue.take();
         } catch (InterruptedException e) {

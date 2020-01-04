@@ -23,6 +23,7 @@ public class ChannelSelectorFactory {
             selector =  clazz.newInstance();
             selector.setChannel(channel);
             Configurables.configure(selector, ctx);
+            Configurables.configure(channel, ctx);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {

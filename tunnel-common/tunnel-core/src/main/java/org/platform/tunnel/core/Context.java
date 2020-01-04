@@ -1,8 +1,6 @@
 package org.platform.tunnel.core;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author twcao
@@ -40,8 +38,8 @@ public class Context {
      * @param key
      * @return
      */
-    public Boolean	getBoolean(String key) {
-        return get(key, null);
+    public Boolean getBoolean(String key) {
+        return getBoolean(key, null);
     }
 
     /**
@@ -50,8 +48,11 @@ public class Context {
      * @param defaultValue
      * @return
      */
-    public Boolean	getBoolean(String key, Boolean defaultValue) {
-        return get(key, defaultValue);
+    public Boolean getBoolean(String key, Boolean defaultValue) {
+        if(this.parameters.containsKey(key)) {
+            return "true".equals(this.parameters.get(key)) ? true : false;
+        }
+        return defaultValue;
     }
 
     /**
@@ -59,8 +60,8 @@ public class Context {
      * @param key
      * @return
      */
-    public Integer	getInteger(String key) {
-        return get(key, null);
+    public Integer getInteger(String key) {
+        return getInteger(key, null);
     }
 
     /**
@@ -69,8 +70,15 @@ public class Context {
      * @param defaultValue
      * @return
      */
-    public Integer	getInteger(String key, Integer defaultValue) {
-        return get(key, defaultValue);
+    public Integer getInteger(String key, Integer defaultValue) {
+        if(this.parameters.containsKey(key)) {
+            try {
+                return Integer.parseInt(this.parameters.get(key));
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
+        return defaultValue;
     }
 
     /**
@@ -79,7 +87,7 @@ public class Context {
      * @return
      */
     public Long getLong(String key) {
-        return get(key, null);
+        return getLong(key, null);
     }
 
     /**
@@ -89,19 +97,26 @@ public class Context {
      * @return
      */
     public Long getLong(String key, Long defaultValue) {
-        return get(key, defaultValue);
+        if(this.parameters.containsKey(key)) {
+            try {
+                return Long.parseLong(this.parameters.get(key));
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
+        return defaultValue;
     }
 
     /**
      *  return parameters
      * @return
      */
-    public Map<String, String>	getParameters() {
+    public Map<String, String> getParameters() {
         return this.parameters;
     }
 
     public String getString(String key) {
-        return get(key, null);
+        return getString(key, null);
     }
 
     /**
@@ -111,7 +126,10 @@ public class Context {
      * @return
      */
     public String getString(String key, String defaultValue) {
-        return get(key, defaultValue);
+        if(this.parameters.containsKey(key)) {
+            return null == this.parameters.get(key) ? defaultValue : this.parameters.get(key);
+        }
+        return defaultValue;
     }
 
     /**
@@ -143,6 +161,23 @@ public class Context {
         this.parameters.putAll(map);
     }
 
+    public List<String> getPrefix(String ... prefix) {
+        List<String> prefixs = new ArrayList<>();
+        Iterator<Map.Entry<String, String>> iterator = this.parameters.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<String, String> entry = iterator.next();
+            String key = entry.getKey();
+            for(String pre : prefix) {
+                if(pre == null || pre.equals("")) {
+                    continue;
+                }
+                if(key.startsWith(pre)) {
+                    prefixs.add(entry.getValue());
+                }
+            }
+        }
+        return prefixs;
+    }
     /**
      * toString
      * @return
@@ -156,16 +191,5 @@ public class Context {
             sb.append(entry.getKey()).append(":").append(entry.getValue()).append(";");
         }
         return sb.toString();
-    }
-
-    /**
-     * Gets value mapped to key, returning defaultValue if unmapped.
-     * @param key
-     * @param defaultValue
-     * @param <T>
-     * @return
-     */
-    private <T> T get(String key, T defaultValue) {
-        return parameters.containsKey(key) ? (T) parameters.get(key) : defaultValue;
     }
 }
