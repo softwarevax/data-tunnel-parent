@@ -8,7 +8,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.platform.tunnel</groupId>
     <artifactId>tunnel-dependencies-bom</artifactId>
-    <version>${revision}</version>
+    <version>1.0.0</version>
     <name>tunnel-dependencies-bom</name>
 
     <description>Unified version management</description>
@@ -38,37 +38,37 @@
             <dependency>
                 <groupId>org.platform.tunnel</groupId>
                 <artifactId>tunnel-beans</artifactId>
-                <version>${revision}</version>
+                <version>1.0.0</version>
             </dependency>
             <dependency>
                 <groupId>org.platform.tunnel</groupId>
                 <artifactId>tunnel-utils</artifactId>
-                <version>${revision}</version>
+                <version>1.0.0</version>
             </dependency>
             <dependency>
                 <groupId>org.platform.tunnel</groupId>
                 <artifactId>tunnel-core</artifactId>
-                <version>${revision}</version>
+                <version>1.0.0</version>
             </dependency>
             <dependency>
                 <groupId>org.platform.tunnel</groupId>
                 <artifactId>channel-memory</artifactId>
-                <version>${revision}</version>
+                <version>1.0.0</version>
             </dependency>
             <dependency>
                 <groupId>org.platform.tunnel</groupId>
                 <artifactId>channel-alibaba-rocketmq</artifactId>
-                <version>${revision}</version>
+                <version>1.0.0</version>
             </dependency>
             <dependency>
                 <groupId>org.platform.tunnel</groupId>
                 <artifactId>tunnel-source-http</artifactId>
-                <version>${revision}</version>
+                <version>1.0.0</version>
             </dependency>
             <dependency>
                 <groupId>org.platform.tunnel</groupId>
                 <artifactId>tunnel-sink-tcp</artifactId>
-                <version>${revision}</version>
+                <version>1.0.0</version>
             </dependency>
             <dependency>
                 <groupId>commons-collections</groupId>

@@ -1,3 +1,5 @@
+package org.platform.tunnel.test;
+
 import org.platform.tunnel.channel.alibabamq.AlibabaRocketMQChannel;
 import org.platform.tunnel.channel.memory.MemoryChannel;
 import org.platform.tunnel.core.AbstractTunnelTask;
@@ -16,6 +18,10 @@ import org.platform.tunnel.source.http.HttpSource;
  */
 public class App {
     public static void main(String[] args) {
+        testMemory();
+    }
+
+    public static void testRocketMQ() {
         String topic = "test";
         Context ctx = new Context();
         ctx.put(Constants.MQ_PRODUCER_GROUP_NAME, "ProducerGroupName");
@@ -31,7 +37,10 @@ public class App {
         AbstractTunnelTask task = TunnelTaskFactory.create(ctx, HttpSource.class, AlibabaRocketMQChannel.class, TcpSink.class);
         Thread thread = new Thread(task);
         thread.start();
+    }
 
+    public static void testMemory() {
+        Context ctx = new Context();
         AbstractTunnelTask task2 = TunnelTaskFactory.create(ctx, HttpSource.class, MemoryChannel.class, TcpSink.class);
         Thread thread2 = new Thread(task2);
         thread2.start();
