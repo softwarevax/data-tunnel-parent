@@ -5,7 +5,7 @@ APP="tunnel-test-1.0.0"
 APP_NAME=${APP}".jar"
 
 log_dir="/data/test/log/"
-log_file="/data/test/log/intellectMedicate.log"
+log_file="/data/test/log/tunnel-test-1.0.0.log"
 
 command=$1
 
@@ -17,7 +17,7 @@ function start(){
     fi
 
     rm -f tpid
-    java -classpath %dir%\${APP};%dir%\lib\* org.platform.tunnel.test.App
+    java -classpath %dir%\${APP}:%dir%\lib\* org.platform.tunnel.test.App
     echo $! > tpid
     check
 }
