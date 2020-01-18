@@ -9,7 +9,7 @@ import org.platform.tunnel.core.*;
  * @classname AbstractChannel
  * @date 2020/1/3 12:58
  */
-public abstract class AbstractChannel implements Channel, Configurable, LifecycleAware, NamedComponent {
+public abstract class AbstractChannel implements Configurable, Channel,  LifecycleAware, NamedComponent {
 
     private String name;
 
@@ -17,6 +17,11 @@ public abstract class AbstractChannel implements Channel, Configurable, Lifecycl
 
     public AbstractChannel() {
         lifecycleState = LifecycleState.IDLE;
+    }
+
+    @Override
+    public Event take() {
+        return new DefaultEvent();
     }
 
     @Override

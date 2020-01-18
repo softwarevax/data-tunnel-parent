@@ -1,5 +1,6 @@
 package org.platform.tunnel.core;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,7 +11,7 @@ import java.util.Map;
  * @classname DefaultEvent
  * @date 2020/1/3 11:40
  */
-public class DefaultEvent implements Event {
+public class DefaultEvent implements Event, Serializable {
 
     public static final String charset = "UTF-8";
 
