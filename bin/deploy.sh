@@ -17,7 +17,7 @@ function start(){
     fi
 
     rm -f tpid
-    java -classpath %dir%\${APP}:%dir%\lib\* org.platform.tunnel.test.App
+    nohup java -classpath "/data/test/tunnel-test-1.0.0.jar":"/data/test/lib/*" org.platform.tunnel.test.App > ${log_file} 2>&1 &
     echo $! > tpid
     check
 }
